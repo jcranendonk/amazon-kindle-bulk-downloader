@@ -388,6 +388,8 @@ const main = async (options: Options) => {
   const browser = await puppeteer.launch({
     // headless: false,
     // userDataDir: "./user_data",
+    executablePath: '/usr/bin/chromium', 
+    args: ['--no-sandbox', '--headless', '--disable-gpu']
   });
   const page = await browser.newPage();
 
