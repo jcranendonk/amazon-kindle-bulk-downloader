@@ -19,6 +19,8 @@ import type {
 
 type Auth = { csrfToken: string; cookie: string };
 
+const collator = new Intl.Collator(undefined, { numeric: true });
+
 /**
  * Creates a new browser session using puppeteer
  */
@@ -199,7 +201,7 @@ const getAllContentItems = async (auth: Auth, options: Options) => {
   logUpdate(`Found ${allItems.length} books in total`);
   logUpdate.done();
 
-  allItems.sort((a, b) => a.title - b.title);
+  allItems.sort((a, b) => collator.compare(a.title, b.title));
   return allItems;
 };
 
