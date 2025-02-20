@@ -199,7 +199,7 @@ const getAllContentItems = async (auth: Auth, options: Options) => {
   logUpdate(`Found ${allItems.length} books in total`);
   logUpdate.done();
 
-  return allItems;
+  return allItems.sort((a, b) => a.title - b.title);
 };
 
 /**
@@ -417,7 +417,8 @@ const main = async (options: Options) => {
 
   const books = await getAllContentItems(auth, options);
 
-  await downloadBooks(auth, device, books, options);
+  console.log(books.map(a => a.title));
+  // await downloadBooks(auth, device, books, options);
 
   await browser.close();
 };
