@@ -420,8 +420,7 @@ const main = async (options: Options) => {
 
   const books = await getAllContentItems(auth, options);
 
-  console.log(books.map(a => a.title));
-  // await downloadBooks(auth, device, books, options);
+  await downloadBooks(auth, device, books, options);
 
   await browser.close();
 };
