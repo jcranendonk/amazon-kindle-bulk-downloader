@@ -199,7 +199,8 @@ const getAllContentItems = async (auth: Auth, options: Options) => {
   logUpdate(`Found ${allItems.length} books in total`);
   logUpdate.done();
 
-  return allItems.sort((a, b) => a.title - b.title);
+  allItems.sort((a, b) => a.title - b.title);
+  return allItems;
 };
 
 /**
