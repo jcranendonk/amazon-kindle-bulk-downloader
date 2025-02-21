@@ -299,7 +299,7 @@ const downloadSingleBook = async (
     throw new Error(`${rawResponse.status}: ${rawResponse.statusText}`);
   }
 
-  const sz = parseInt(response.headers.get("content-length") ?? "0", 10);
+  const sz = parseInt(rawResponse.headers.get("content-length") ?? "0", 10);
   if (sz > 5e6) {
     return;
   }
