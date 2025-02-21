@@ -298,6 +298,12 @@ const downloadSingleBook = async (
   if (!rawResponse.ok) {
     throw new Error(`${rawResponse.status}: ${rawResponse.statusText}`);
   }
+
+  const sz = parseInt(response.headers.get("content-length") ?? "0", 10);
+  if (sz > 5e6) {
+    return;
+  }
+  
   const { response, totalSize } = observeResponse(rawResponse, {
     onUpdate: (progress) => progressBar.update(totalSize, progress),
   });
