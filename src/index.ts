@@ -302,6 +302,8 @@ const downloadSingleBook = async (
     onUpdate: (progress) => progressBar.update(totalSize, progress),
   });
 
+  if (totalSize > 10e6) return;
+
   if (response.ok) {
     const content = rawResponse.headers.get("content-disposition") ?? "";
     const extension =
